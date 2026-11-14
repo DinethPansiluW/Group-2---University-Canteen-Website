@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+</head>
+<body>
+    <header>
+        <title>Registration</title>
+    </header>
+    <p>Welcome to the UOR Official Canteen Website</p>
+    
+</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register | University of Ruhuna Canteens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:wght@600;700;800&family=Noto+Sans+Sinhala:wght@500;700&display=swap" rel="stylesheet">
+<!-- home.css supplies the shared theme (variables, header, buttons, modal, toast). register.css only adds what this page needs. -->
+<link rel="stylesheet" href="../css/home.css">
+<link rel="stylesheet" href="../css/register.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="home.html#home"><span class="brand-mark" data-brand-mark></span><span data-brand-name></span></a>
+  <nav class="main-nav">
+    <a class="nav-link" href="home.html#home">Home</a>
+    <a class="nav-link" href="home.html#canteens">Canteens</a>
+    <a class="nav-link" href="home.html#menu">Menu</a>
+    <a class="nav-link" href="home.html#orders">Orders</a>
+    <a class="nav-link active" href="register.html">Register</a>
+  </nav>
+  <div class="header-actions">
+    <a class="button button-dark small" href="home.html#home">Back to home</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero register-hero section-wrap" id="register">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="pulse"></span> <span class="si">රුහුණ විශ්වවිද්‍යාලය</span> · Student registration</span>
+      <h1>Create your account,<br><span>skip the queue.</span></h1>
+      <p>Register once with your student details and order from any Ruhuna canteen between lectures.</p>
+      <div class="perk-list">
+        <div class="perk"><span class="perk-icon">🍛</span><div><b>Order ahead</b><small>Pick your food before you reach the counter.</small></div></div>
+        <div class="perk"><span class="perk-icon">🧾</span><div><b>Track every order</b><small>Keep your Order IDs and see their status.</small></div></div>
+        <div class="perk"><span class="perk-icon">🥥</span><div><b>Check stock live</b><small>Know what is left before you walk over.</small></div></div>
+      </div>
+    </div>
+
+    <div class="register-card">
+      <h2>Student registration</h2>
+      <p class="muted">All fields are required.</p>
+      <form id="register-form" novalidate>
+        <label class="form-label" for="full-name">Full name
+          <input id="full-name" name="fullName" autocomplete="name" placeholder="e.g. Nimali Perera" aria-describedby="err-full-name">
+          <small class="field-error" id="err-full-name"></small>
+        </label>
+
+        <div class="form-two">
+          <label class="form-label" for="student-id">Student ID
+            <input id="student-id" name="studentId" autocomplete="off" placeholder="e.g. SC/2022/12345" aria-describedby="err-student-id">
+            <small class="field-error" id="err-student-id"></small>
+          </label>
+          <label class="form-label" for="academic-year">Academic year
+            <select id="academic-year" name="year" aria-describedby="err-academic-year"></select>
+            <small class="field-error" id="err-academic-year"></small>
+          </label>
+        </div>
+
+        <label class="form-label" for="faculty">Faculty
+          <select id="faculty" name="faculty" aria-describedby="err-faculty"></select>
+          <small class="field-error" id="err-faculty"></small>
+        </label>
+
+        <div class="form-two">
+          <label class="form-label" for="email">University email
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" aria-describedby="err-email">
+            <small class="field-error" id="err-email"></small>
+          </label>
+          <label class="form-label" for="phone">Mobile number
+            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="07X XXX XXXX" aria-describedby="err-phone">
+            <small class="field-error" id="err-phone"></small>
+          </label>
+        </div>
+
+        <div class="form-two">
+          <label class="form-label" for="password">Password
+            <input id="password" name="password" type="password" autocomplete="new-password" aria-describedby="hint-password err-password">
+            <small class="field-hint" id="hint-password">At least 8 characters with a letter and a number.</small>
+            <small class="field-error" id="err-password"></small>
+          </label>
+          <label class="form-label" for="confirm-password">Confirm password
+            <input id="confirm-password" name="confirmPassword" type="password" autocomplete="new-password" aria-describedby="err-confirm-password">
+            <small class="field-error" id="err-confirm-password"></small>
+          </label>
+        </div>
+
+        <label class="check-filter" for="show-password"><input type="checkbox" id="show-password"> Show passwords</label>
+
+        <label class="check-filter" for="terms"><input type="checkbox" id="terms" aria-describedby="err-terms"> I confirm these details are correct.</label>
+        <small class="field-error" id="err-terms"></small>
+
+        <button class="button button-green full submit-button" type="submit" id="register-submit">Create account</button>
+        <p class="switch-note">Already registered? <a class="text-link" href="home.html#home">Go to home</a></p>
+      </form>
+      <p class="demo-note">Demo: registrations are saved in this browser (LocalStorage). For real accounts across devices, connect a backend and database.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"><div class="section-wrap footer-inner"><a class="brand" href="home.html#home"><span class="brand-mark" data-brand-mark></span><span data-brand-name></span></a><p id="footer-tagline"></p></div></footer>
+
+<div class="modal-backdrop" id="success-modal" role="dialog" aria-modal="true" aria-labelledby="success-title">
+  <div class="modal success-modal">
+    <div class="success-icon" aria-hidden="true">✓</div>
+    <h2 id="success-title">Registration complete!</h2>
+    <p id="success-text"></p>
+    <div class="success-details">Student ID <b id="success-id"></b></div>
+    <a class="button button-green full" id="success-continue" href="home.html#menu">Start ordering</a>
+    <button class="button button-light full" type="button" id="register-another">Register another student</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="../js/register.js"></script>
+</body>
+</html>
