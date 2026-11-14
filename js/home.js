@@ -1,7 +1,7 @@
 /* ====== EDIT THIS BLOCK FOR YOUR CANTEENS ======
    Canteen names below are placeholders: replace them with the real ones. */
 const CONFIG = {
-  brand: { name: "Ruhuna", accent: "Eats", mark: "R" },
+  brand: { name: "Taste of ", accent: "Ruhuna", mark: "../assets/ruhuna-2.png" },
   tagline: "University of Ruhuna · Matara, Southern Province · Unofficial student project",
   currency: "Rs.",
   ownerPin: "1234",                                          // demo only, not real security
@@ -265,7 +265,12 @@ $$(".owner-tab").forEach(b => b.addEventListener("click", () => {
 function init() {
   const { brand } = CONFIG;
   document.title = `${brand.name}${brand.accent} | University of Ruhuna Canteens`;
-  $$("[data-brand-mark]").forEach(el => el.textContent = brand.mark);
+  $$("[data-brand-mark]").forEach(el => {
+    if (/\.(png|jpe?g|svg|webp|gif)$/i.test(brand.mark)) { // image logo
+      el.classList.add("has-logo");
+      el.innerHTML = `<img src="${esc(brand.mark)}" alt="University of Ruhuna logo" onerror="this.parentNode.classList.remove('has-logo');this.parentNode.textContent='R'">`;
+    } else el.textContent = brand.mark; // text logo
+  });
   $$("[data-brand-name]").forEach(el => el.innerHTML = `${esc(brand.name)}<span class="brand-green">${esc(brand.accent)}</span>`);
   $("footer-tagline").textContent = CONFIG.tagline;
   $("hero-count").textContent = `${C.length} canteens, 5 campuses`;
