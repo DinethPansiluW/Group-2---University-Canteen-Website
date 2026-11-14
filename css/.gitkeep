@@ -1,0 +1,196 @@
+/* register.css: loaded AFTER home.css, so it reuses its variables, fonts and sizes.
+   Only registration-specific pieces are defined here. */
+
+:root {
+  --danger: #bb4444;        /* same red already used by .status-badge.sold */
+  --danger-pale: #ffeded;
+}
+
+/* anchors styled as buttons (home.css only styles <button>) */
+a.button {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+/* ---------- layout (reuses .hero grid) ---------- */
+.register-hero {
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: start;
+  gap: 56px;
+  padding: 56px 0 80px;
+}
+
+.perk-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+  max-width: 480px;
+}
+.perk {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.perk-icon {
+  width: 42px;
+  height: 42px;
+  flex: none;
+  background: var(--green-pale);
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 21px;
+}
+.perk b {
+  display: block;
+  font-size: 14px;
+}
+.perk small {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ---------- form card ---------- */
+.register-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 10px 30px #3b221010;
+}
+.register-card h2 {
+  font: 700 29px var(--font-head);
+  letter-spacing: -0.7px;
+  margin: 0 0 5px;
+}
+.register-card > p.muted {
+  margin: 0 0 6px;
+}
+.register-card .form-label {
+  margin: 14px 0;
+}
+.register-card .form-two .form-label {
+  margin: 14px 0 6px;
+}
+.register-card .form-two {
+  align-items: flex-start;
+}
+.register-card .check-filter {
+  padding: 8px 5px 4px;
+}
+.register-card .check-filter input {
+  accent-color: var(--green);
+}
+.submit-button {
+  margin-top: 18px;
+}
+.switch-note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin: 14px 0 0;
+}
+
+/* ---------- validation ---------- */
+.field-hint,
+.field-error {
+  display: block;
+  margin-top: 5px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+.field-hint {
+  font-weight: 400;
+  color: var(--muted);
+}
+.field-error {
+  font-weight: 600;
+  color: var(--danger);
+}
+.field-error:empty {
+  display: none;
+}
+.form-label input[aria-invalid="true"],
+.form-label select[aria-invalid="true"] {
+  border-color: var(--danger);
+  background: #fffafa;
+}
+.form-label input:focus,
+.form-label select:focus {
+  border-color: var(--green);
+}
+
+/* ---------- success popup (reuses .modal-backdrop / .modal) ---------- */
+.success-modal {
+  text-align: center;
+  padding: 38px 30px 30px;
+}
+.success-icon {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: var(--green-pale);
+  color: var(--green);
+  display: grid;
+  place-items: center;
+  font-size: 34px;
+  font-weight: 800;
+  box-shadow: 0 0 0 8px #f8ecd255;
+}
+.success-modal > p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 8px 0 0;
+}
+.success-details {
+  background: #faf6ee;
+  border-radius: 12px;
+  padding: 12px;
+  margin: 18px 0 20px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.success-details b {
+  color: var(--green);
+  letter-spacing: 0.5px;
+  margin-left: 4px;
+}
+.success-modal .button + .button {
+  margin-top: 10px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .modal-backdrop.show .success-icon {
+    animation: success-pop 0.35s ease both;
+  }
+}
+@keyframes success-pop {
+  from { transform: scale(0.5); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .register-hero {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+@media (max-width: 650px) {
+  .register-hero {
+    padding: 40px 0 50px;
+  }
+  .register-card {
+    padding: 26px 18px;
+  }
+  .register-card .form-two {
+    flex-direction: column;
+    gap: 0;
+  }
+  .register-card .form-two .form-label {
+    margin: 14px 0 0;
+  }
+}
