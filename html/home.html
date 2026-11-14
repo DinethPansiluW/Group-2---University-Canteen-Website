@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruhuna Eats | University of Ruhuna Canteens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:wght@600;700;800&family=Noto+Sans+Sinhala:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/home.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="#home"><span class="brand-mark" data-brand-mark></span><span data-brand-name></span></a>
+  <nav class="main-nav">
+    <a class="nav-link active" href="#home">Home</a>
+    <a class="nav-link" href="#canteens">Canteens</a>
+    <a class="nav-link" href="#menu">Menu</a>
+    <a class="nav-link" href="#orders">Orders</a>
+  </nav>
+  <div class="header-actions">
+    <button class="icon-button" id="cart-open" aria-label="Open cart">🛒<span id="cart-count" class="cart-count">0</span></button>
+    <button class="button button-dark small" id="owner-open">Owner panel</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero section-wrap" id="home">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="pulse"></span> <span class="si">රුහුණ විශ්වවිද්‍යාලය</span> · Matara</span>
+      <h1>Southern flavours,<br><span>served on the hill.</span></h1>
+      <p>From Wellamadama to Hapugala, see what every Ruhuna canteen is serving today, compare prices and order ahead between lectures.</p>
+      <form class="hero-search" id="hero-search">
+        <span>⌕</span><input id="search-input" type="search" placeholder="Search kottu, rice, juice…" aria-label="Search foods">
+        <button class="button button-green" type="submit">Search</button>
+      </form>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+        <img src="../assets/1.jpg" alt="University of Ruhuna campus" class="horizon">
+      <div class="floating-card floating-top"><span class="floating-icon">🍽️</span><div><strong id="hero-count">0 canteens</strong><small>Wellamadama · Galle · Kamburupitiya</small></div></div>
+      <div class="floating-card floating-bottom"><span class="status-dot"></span><div><strong>Check before you go</strong><small>Live stock on every item</small></div></div>
+    </div>
+  </section>
+
+  <section class="section-wrap meal-section">
+    <div class="section-heading">
+      <div><h2>What's on the menu?</h2><p>Pick a meal time to see today's food.</p></div>
+      <span class="date-chip" id="today-date"></span>
+    </div>
+    <div class="meal-tabs">
+      <button class="meal-tab" data-meal="Breakfast"><span>🌅</span><b>Breakfast</b><small>Morning</small></button>
+      <button class="meal-tab" data-meal="Lunch"><span>☀️</span><b>Lunch</b><small>Midday</small></button>
+      <button class="meal-tab" data-meal="Dinner"><span>🌙</span><b>Dinner</b><small>Evening</small></button>
+      <button class="meal-tab" data-meal="All"><span>🍽️</span><b>All food</b><small>Any time</small></button>
+    </div>
+    <div class="section-heading compact"><div><h2 id="featured-title">Popular today</h2></div><a class="text-link" href="#menu">Full menu ↗</a></div>
+    <div class="food-grid" id="home-food-grid"></div>
+  </section>
+
+  <section class="canteen-band" id="canteens">
+    <div class="section-wrap">
+      <div class="section-heading"><div><h2>Explore canteens</h2><p>Tap a canteen to see its menu.</p></div></div>
+      <div class="canteen-grid" id="canteen-grid"></div>
+    </div>
+  </section>
+
+  <section class="section-wrap menu-section" id="menu">
+    <div class="section-heading"><div><h2>Full food menu</h2><p>Filter by canteen, category or availability.</p></div></div>
+    <div class="filters">
+      <label class="filter-field"><span>Canteen</span><select id="canteen-filter"></select></label>
+      <label class="filter-field"><span>Category</span><select id="category-filter"></select></label>
+      <label class="filter-field"><span>Meal time</span><select id="meal-filter"><option value="All">All meal times</option><option>Breakfast</option><option>Lunch</option><option>Dinner</option></select></label>
+      <label class="check-filter"><input type="checkbox" id="available-filter"> Available only</label>
+    </div>
+    <div class="results-line"><span id="results-count"></span><button class="text-link" id="clear-filters">Clear filters</button></div>
+    <div class="food-grid" id="all-food-grid"></div>
+  </section>
+
+  <section class="order-section" id="orders">
+    <div class="section-wrap order-inner">
+      <div><h2>Order now.<br><span>Pick up on campus.</span></h2><p>Add items to your cart, place your order and show your Order ID at the canteen counter.</p><button class="button button-green" id="view-orders">View my orders</button></div>
+      <div class="order-steps"><div><b>1</b><span>Choose food</span></div><div><b>2</b><span>Place your order</span></div><div><b>3</b><span>Collect with Order ID</span></div></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"><div class="section-wrap footer-inner"><a class="brand" href="#home"><span class="brand-mark" data-brand-mark></span><span data-brand-name></span></a><p id="footer-tagline"></p></div></footer>
+
+<div class="overlay" id="cart-overlay"></div>
+<aside class="drawer" id="cart-drawer" aria-label="Cart">
+  <div class="drawer-head"><h2>Your cart</h2><button class="close-button" id="cart-close" aria-label="Close">×</button></div>
+  <div id="cart-items" class="cart-items"></div>
+  <div class="cart-footer"><div class="total-row"><span>Total</span><strong id="cart-total"></strong></div><button class="button button-green full" id="checkout-button">Continue to checkout</button><small>Demo checkout. No real payment is processed.</small></div>
+</aside>
+
+<div class="modal-backdrop" id="checkout-modal"><div class="modal">
+  <button class="close-button modal-x" data-close="checkout-modal" aria-label="Close">×</button>
+  <h2>Confirm your order</h2><p class="muted">One canteen per order.</p>
+  <form id="checkout-form">
+    <label class="form-label">Student name<input id="student-name" required placeholder="Your name"></label>
+    <label class="form-label">Student ID<input id="student-id" required placeholder="Your university ID"></label>
+    <label class="form-label">Pickup canteen<select id="pickup-canteen" disabled></select></label>
+    <label class="form-label">Payment<select id="payment-method"><option>Cash on pickup</option><option>Online payment (demo only)</option></select></label>
+    <div class="checkout-total"><span>Order total</span><strong id="checkout-total"></strong></div>
+    <button class="button button-green full" type="submit">Place order</button>
+  </form>
+</div></div>
+
+<div class="modal-backdrop" id="orders-modal"><div class="modal wide-modal"><button class="close-button modal-x" data-close="orders-modal" aria-label="Close">×</button><h2>My orders</h2><div id="orders-list"></div></div></div>
+
+<div class="modal-backdrop" id="owner-modal"><div class="modal owner-modal">
+  <button class="close-button modal-x" data-close="owner-modal" aria-label="Close">×</button>
+  <h2>Owner dashboard</h2>
+  <div class="owner-tabs"><button class="owner-tab active" data-owner-tab="manage">Manage food</button><button class="owner-tab" data-owner-tab="orders">Orders</button></div>
+  <div id="owner-manage">
+    <form id="food-form" class="owner-form">
+      <input type="hidden" id="edit-food-id">
+      <label class="form-label">Canteen<select id="owner-canteen"></select></label>
+      <label class="form-label">Food name<input id="food-name" required placeholder="e.g. Chicken Kottu"></label>
+      <div class="form-two"><label class="form-label">Category<select id="food-category"></select></label><label class="form-label">Meal time<select id="food-meal"><option>Breakfast</option><option>Lunch</option><option>Dinner</option><option>All</option></select></label></div>
+      <div class="form-two"><label class="form-label">Price<input id="food-price" type="number" min="0" required></label><label class="form-label">Quantity<input id="food-quantity" type="number" min="0" required></label></div>
+      <label class="form-label">Description (optional)<input id="food-desc" maxlength="80"></label>
+      <button class="button button-green full" type="submit" id="save-food">Add food item</button>
+      <button class="button button-light full hidden" type="button" id="cancel-edit">Cancel edit</button>
+    </form>
+    <div class="owner-food-list"><h3>Current menu</h3><div id="owner-food-items"></div></div>
+  </div>
+  <div id="owner-orders" class="hidden"><div id="owner-order-list"></div></div>
+  <p class="demo-note">Demo: data is saved in this browser (LocalStorage). For multiple users and devices, connect a backend and database.</p>
+</div></div>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="../js/home.js"></script>
+</body>
+</html>
